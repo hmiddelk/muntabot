@@ -72,40 +72,34 @@ object Muntabot extends App:
     showHelp.target = "_blank" // Opens in new window
 
     for questionType <- Questions.types do
-      val btn = Document.appendButton(containerElement, questionType.title) {
-        if questionType == Code then
-          val contents = questionType
-            .getQuestion(
-              questionType.pickAnyQuestion(untilWeek, questionType, langFilter)
-            )
-            .split(
-              "39d2c101a1a9746c5e54da6ba6a4ed48"
-            ) // Random hash to split at, see model.scala
-
-          showText.textContent = contents(0)
-
-          if contents.length > 1 then
-            showHelp.href = contents(1)
-            showHelp.textContent = "Loopup information in the course book"
-          else
+      val qt = questionType
+      val btn = Document.appendButton(containerElement, qt.title) {
+        qt match
+          case Code =>
+            val contents = Code
+              .getQuestion(Code.pickAnyQuestion(untilWeek, Code, langFilter))
+              .split("39d2c101a1a9746c5e54da6ba6a4ed48")
+            showText.textContent = contents(0)
+            if contents.length > 1 then
+              showHelp.href = contents(1)
+              showHelp.textContent = "Lookup information in the course book"
+            else
+              showHelp.textContent = ""
+              showHelp.href = ""
+          case _ =>
             showHelp.textContent = ""
             showHelp.href = ""
-        else
-          showHelp.textContent = ""
-          showHelp.href = ""
-
-          showText.textContent = questionType.getQuestion(
-            questionType.pickAnyQuestion(untilWeek, questionType, langFilter)
-          )
-
-          if untilWeek < 1 || untilWeek > MaxWeek then
-            untilWeek = MaxWeek
+            showText.textContent = qt.getQuestion(
+              qt.pickAnyQuestion(untilWeek, qt, langFilter)
+            )
+            if untilWeek < 1 || untilWeek > MaxWeek then
+              untilWeek = MaxWeek
+              weekInput.value = untilWeek.toString
             weekInput.value = untilWeek.toString
-
-          weekInput.value = untilWeek.toString
       }
-      if questionType == Code then
-        codeBtn = btn
+      qt match
+        case Code => codeBtn = btn
+        case _    =>
 
     Document.appendText(
       containerElement,
