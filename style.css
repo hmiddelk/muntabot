@@ -50,3 +50,17 @@ button {
 #page-decider {
   display: none;
 }
+
+.compare-table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+.compare-table th,
+.compare-table td {
+  border: 1px solid black;
+  padding: 0.4rem 1rem;
+  text-align: left;
+}
+.compare-table th {
+  font-weight: bold;
+}
