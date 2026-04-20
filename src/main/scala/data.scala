@@ -197,7 +197,10 @@ lazy val terms = Seq[(Week, Concepts | Contrasts | Code)](
   Week(8) -> Concepts(
     "nested structure",
     "type parameter",
-    "generic funktion"
+    "generic collection"
+  ),
+  Week(8) -> Concepts.forScala(
+    "generic function"
   ),
   Week(8) -> Concepts.forScala(
     "matrix"
