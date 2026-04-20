@@ -159,7 +159,6 @@ lazy val terms = Seq[(Week, Concepts | Contrasts | Code)](
   ),
   Week(7) -> Concepts(
     "pseudo code",
-    "sequence method",
     "filtering",
     "transformation",
     "registration",
@@ -172,7 +171,11 @@ lazy val terms = Seq[(Week, Concepts | Contrasts | Code)](
   ),
   Week(7) -> Concepts.forScala(
     "repeated parameters",
-    "ArrayBuffer"
+    "ArrayBuffer",
+    "sequence method"
+  ),
+  Week(7) -> Concepts(
+    "Iterable"
   ),
   Week(7) -> Concepts.forJava(
     "ArrayList"
