@@ -2,191 +2,270 @@ package shared
 
 lazy val terms = Seq[(Week, Concepts | Contrasts | Code)](
   Week(1) -> Concepts(
-    "funktion",
-    "while-sats",
-    "for-sats",
-    "stränginterpolator",
-    "tilldelning",
-    "kompilering",
-    "grundtyper",
-    "booleskt värde",
-    "exekvering i sekvens",
-    "abstraktion"
+    "procedure",
+    "while statement",
+    "for statement",
+    "assignment",
+    "compilation",
+    "reference type",
+    "boolean value",
+    "sequenced execution",
+    "abstraction"
+  ),
+  Week(1) -> Concepts.forScala(
+    "function",
+    "string interpolator",
+    "value types",
+    "REPL"
+  ),
+  Week(1) -> Concepts.forJava(
+    "primitive types",
+    "jshell"
   ),
   Week(1) -> Contrasts(
-    "map" -> "foreach",
-    "for-uttryck" -> "for-sats",
-    "Vector" -> "Array",
     "while" -> "for-do",
-    "typ" -> "värde",
-    "if-uttryck" -> "if-sats",
-    "def" -> "val",
-    "var" -> "val",
-    "kompileringsfel" -> "körtidsfel",
+    "type" -> "value",
+    "compilation error" -> "runtime error",
     "Char" -> "String",
-    "källkod" -> "maskinkod",
-    "Char" -> "String"
+    "source code" -> "machine code"
+  ),
+  Week(1) -> Contrasts.forScala(
+    "map" -> "foreach",
+    "for-expression" -> "for-statement",
+    "Vector" -> "Array",
+    "if-expression" -> "if-statement",
+    "def" -> "val",
+    "var" -> "val"
   ),
   Week(1) -> Code(
-    "ett uttryck som räknar ut cirkelarean givet radien av r" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Definiera%20namn%20p%C3%A5%20uttryck",
-    "ett booleskt uttryck som är sant om x är större än noll eller x är mindre än -42" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Alternativ%20med%20if-uttryck",
-    "en repetition som skriver ut de första 42 heltalen" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Kontrollstrukturer:%20alternativ%20och%20repetition",
-    "en funktion isEven(n: Int) som är sann om n är ett jämt tal" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Kontrollstrukturer:%20alternativ%20och%20repetition"
+    "an expression that calculates the area of a circle given the radius of r" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Define%20name%20for%20expressions",
+    "a Boolean expression that is true if x is greater than zero or x is less than -42" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Alternatives%20with%20if-expressions",
+    "a loop that prints the first 42 integers" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Control%20structures:%20alternatives%20and%20repetition",
+    "a function isEven(n: Int) which is true if n is an even number" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Control%20structures:%20alternatives%20and%20repetition"
   ),
   Week(2) -> Concepts(
-    "for-uttryck",
-    "samlingsmetoden map",
-    "indexering",
-    "kontrollstruktur",
-    "huvudprogram"
+    "map collection method",
+    "indexing",
+    "control structure",
+    "main program"
+  ),
+  Week(2) -> Concepts.forScala(
+    "for expression"
   ),
   Week(2) -> Contrasts(
-    "pseudokod" -> "exekverbar implementation",
+    "pseudocode" -> "executable implementation",
     "parameter" -> "argument",
-    "returtyp" -> "parametertyp",
+    "returntype" -> "parametertype"
+  ),
+  Week(2) -> Contrasts.forScala(
     "for-do" -> "for-yield"
   ),
   Week(2) -> Code(
-    "en funktion som ger minsta heltalet i en heltalssekvens,\nutan att använda inbyggda min" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Loopa%20genom%20en%20samling%20med%20en%20while-sats",
-    "en funktion som ger största heltalet i en heltalssekvens,\nutan att använda inbyggda max" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Loopa%20genom%20en%20samling%20med%20en%20while-sats",
-    "två förändringsbara variabler som först initialiseras\nmed två olika helatal och sedan byter värde med varandra" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Variabeldeklaration%20och%20tilldelningssats",
-    "en funktion som summerar alla heltal i en sekvens,\nutan att använda inbyggda sum" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Loopa%20genom%20elementen%20i%20en%20vektor"
+    "a function that returns the smallest integer in a sequence of integers,\nwithout using built-in min" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Loop%20through%20a%20collection%20with%20a%20while-statement",
+    "a function that returns the largest integer in a sequence of integers,\nwithout using built-in max" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Loop%20through%20a%20collection%20with%20a%20while-statement",
+    "two mutable variables that are first initialized\nwith two different integers and then swap values with each other" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Variable%20declaration%20and%20assignment%20statement",
+    "a function that sums all integers in a sequence,\nwithout using built-in sums" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Loop%20through%20the%20elements%20in%20a%20vector"
   ),
   Week(3) -> Concepts(
-    "anonym funktion",
-    "predikat",
-    "äkta funktion",
-    "aktiveringspost",
-    "anropsstacken",
-    "default-argument",
-    "returtyp",
-    "namngivna argument",
-    "lokal funktion",
-    "funktion som äkta värde"
+    "anonymous function",
+    "lambda function",
+    "predicate",
+    "real function",
+    "activation record",
+    "call stack",
+    "return type"
   ),
-  Week(3) -> Contrasts(
-    "överlagring" -> "default-argument",
-    "namngivna argument" -> "default-argument"
+  Week(3) -> Concepts.forScala(
+    "local function",
+    "function as real value"
+  ),
+  Week(3) -> Concepts.forScala(
+    "default argument",
+    "named arguments"
+  ),
+  Week(3) -> Contrasts.forScala(
+    "overloading" -> "default-argument",
+    "named argument" -> "default-argument"
   ),
   Week(3) -> Code(
-    "en anonym funktion Int => Int som ger kvadraten och som appliceras på alla element i en heltalssekvens" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Anonyma%20funktioner",
-    "en definition av en oäkta funktion som returnerar slumpmässiga jämna heltal mellan n och m" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Exempel%20p%C3%A5%20o%C3%A4kta%20funktioner:%20slumptal"
+    "an anonymous function Int => Int which gives the square and which is applied to all elements of an integer sequence" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Anonymous%20functions",
+     "a definition of a spurious function that returns random even integers between n and m" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Examples%20of%20impure%20functions:%20random%20numbers"
   ),
   Week(4) -> Concepts(
-    "singelobjekt",
-    "paket",
-    "privat medlem",
-    "namnrymd",
-    "metoden apply",
-    "tupel",
+    "package",
+    "private member",
+    "namespace",
     "import",
-    "punktnotation",
-    "extensionsmetod",
+    "dotnotation",
     "classpath"
   ),
-  Week(4) -> Contrasts(
-    "värdeanrop" -> "namnanrop",
+  Week(4) -> Concepts.forJava(
+    "singleton pattern"
+  ),
+  Week(4) -> Concepts.forScala(
+    "singleton objekt",
+    "apply method",
+    "tuple",
+    "extension method"
+  ),
+  Week(4) -> Contrasts.forScala(
+    "call by value" -> "call by name",
     "val" -> "lazy val",
     "def" -> "lazy val"
   ),
   Week(5) -> Concepts(
-    "klass",
-    "attribut",
-    "fabriksmetod",
-    "instansiering",
-    "tillstånd",
-    "klassparameter",
-    "kompanjonsobjekt",
-    "nyckelordet this",
-    "strängrepresentation"
+    "class",
+    "attribute",
+    "factory method",
+    "instantiation",
+    "state",
+    "keyword this",
+    "string representation"
+  ),
+  Week(5) -> Concepts.forScala(
+    "class parameter",
+    "companion object",
+    "uniform access principle"
+  ),
+  Week(5) -> Concepts.forJava(
+    "static member",
+    "Record"
   ),
   Week(5) -> Contrasts(
-    "funktion" -> "metod",
-    "klass" -> "case-klass",
-    "singelobjekt" -> "klass",
     "getter" -> "setter",
-    "referenslikhet" -> "innehållslikhet"
+    "referential equality" -> "value or structural equality"
+  ),
+  Week(5) -> Contrasts.forScala(
+    "function" -> "method",
+    "class" -> "case-class",
+    "singleton object" -> "class"
   ),
   Week(6) -> Concepts(
-    "mönstermatchning",
-    "undantag",
-    "konstruktormönster",
+    "exception"
+  ),
+  Week(6) -> Concepts.forScala(
+    "pattern matching",
+    "match expression",
+    "constructor pattern",
     "Option",
     "Try"
   ),
-  Week(6) -> Contrasts(
+  Week(6) -> Concepts.forJava(
+    "Optional",
+    "switch expression"
+  ),
+  Week(6) -> Contrasts.forScala(
     "Try" -> "try-catch"
   ),
   Week(7) -> Concepts(
-    "pseudokod",
-    "sekvensalgoritm",
-    "filtrering",
-    "transformering",
-    "registrering",
-    "att ändra på plats",
-    "likhet mellan strängar",
-    "sorterad sekvens av strängar",
+    "pseudo code",
+    "sequence method",
+    "filtering",
+    "transformation",
+    "registration",
+    "in-place modification",
+    "string similarity",
+    "sorted sequence of strings",
     "enumeration",
-    "linjärsökning",
-    "insättningssortering",
-    "repeterade parametrar"
+    "linear search",
+    "insertion sort"
+  ),
+  Week(7) -> Concepts.forScala(
+    "repeated parameters",
+    "ArrayBuffer"
+  ),
+  Week(7) -> Concepts.forJava(
+    "ArrayList"
   ),
   Week(7) -> Contrasts(
+    "transformation to new sequence" -> "in-place transformation"
+  ),
+  Week(7) -> Contrasts.forScala(
+    "mutable collection" -> "immutable collection",
     "ArrayBuffer" -> "Array",
-    "förändringsbar samling" -> "oföränderlig samling",
-    "transformering till ny sekvens" -> "transformering på plats",
-    "uppräknade värden med heltal" -> "uppräknade värden med enum",
-    "förseglad (sealed) typhierarki" -> "ej förseglad typhierarki",
+    "enumerated values with integers" -> "enumerated values with enum",
+    "sealed type hierarchy" -> "unsealed type hierarchy",
     "List" -> "ListBuffer"
   ),
   Week(7) -> Code(
-    "en funktion som linjärsöker efter en instans av klassen Person\nmed ett visst efternamn i en osorterad sekvens av personer\nmed hjälp av en while (och inte find/indexOf).\n Funktionens returtyp ska vara Option" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=S%C3%B6kning",
-    "ett program som registrerar 1000 tärningskast i en Array" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Registrering",
-    "en funktion copy som kopierar en Array med heltal\nelement för element till en ny Array\nsom använder en while-sats i implementationen" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Algoritm:%20SEQ-COPY",
-    "en funktion insert som givet en Array med heltal\nstoppar in ett element på en viss plats\nsom använder en while-sats i implementationen" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Exempel:%20SEQ-INSERT/REMOVE-COPY",
-    "en funktion som avgör om två strängar är lika\nsom använder en while-sats i implementationen" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=J%C3%A4mf%C3%B6ra%20str%C3%A4ngar:%20likhet"
+    "a function that linearly searches for an instance of the class Person\nwith a given last name in an unsorted sequence of people\nusing a while (and not find/indexOf).\n The function's return type should be Option" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Searching",
+    "a program that records 1000 dice rolls in an Array" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Registration",
+    "a function copy that copies an Array of integers\nelement by element to a new Array\nthat uses a while statement in the implementation" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Algorithm:%20SEQ-COPY",
+    "a function insert that given an Array of integers\ninserts an element at a specific location\nusing a while statement in the implementation" ->  "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Example:%20SEQ-INSERT%2FREMOVE-COPY",
+    "a function that determines whether two strings are equal\nthat uses a while statement in the implementation" ->  "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Comparing%20strings:%20equality"
   ),
   Week(8) -> Concepts(
-    "matris",
-    "nästlad struktur",
-    "typparameter",
-    "generisk funktion"
+    "nested structure",
+    "type parameter",
+    "generic funktion"
+  ),
+  Week(8) -> Concepts.forScala(
+    "matrix"
   ),
   Week(8) -> Contrasts(
-    "matris" -> "vektor",
-    "generisk datastruktur" -> "generisk funktion"
+    "generic datastructure" -> "generic function"
+  ),
+  Week(8) -> Contrasts.forScala(
+    "matrix" -> "vector"
   ),
   Week(8) -> Code(
-    "en funktion som skriver ut en strängmatris rad för rad" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Iterera%20%C3%B6ver%20n%C3%A4stlad%20struktur",
-    "ett predikat som testar om en nästlad sekvens av heltal\när en matematisk matris med m rader och n kolumner\nmed och utan hjälp av befintliga metoden forall" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=Hur%20indexera%20i%20matriser?"
+    "a function that prints a string matrix row by row" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Iterate%20over%20nested%20structure",
+    "a predicate that tests whether a nested sequence of integers\nis a mathematical matrix with m rows and n columns\nwith and without the help of the existing method forall" ->  "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=How%20to%20index%20in%20matrices%3F"
   ),
   Week(9) -> Contrasts(
-    "mängd" -> "sekvens",
-    "mängd" -> "nyckel-värde-tabell",
-    "nyckel-värde-tabell" -> "sekvens"
+    "set" -> "sequence",
+    "set" -> "map",
+    "map" -> "sequence"
   ),
   Week(9) -> Code(
-    "en funktion readPersonSet som läser in rader med kommaseparerade efternamn och förnamn från en textfil\noch skapar en mängd av instanser av case-klassen Person och kastar ett undantag om det finns dubbletter" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=L%C3%A4sa%20text%20fr%C3%A5n%20fil%20och%20webbsida",
-    "en funktion readPersonMap som läser in rader med kommaseparerade efternamn och förnamn och personnummer från en textfil\noch skapar en nyckel-värde-tabell med personnummer av typen Long som nyckel och instanser av case-klassen Person som värde" -> "https://fileadmin.cs.lth.se/pgk/compendium.pdf#nameddest=L%C3%A4sa%20text%20fr%C3%A5n%20fil%20och%20webbsida"
+    "a function readPersonSet that reads lines of comma-separated last names and first names from a text file\nand creates an array of instances of the case class Person and throws an exception if there are duplicates" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Reading%20text%20from%20file%20and%20webpage",
+    "a function readPersonMap that reads lines with comma-separated last names and first names and social security numbers from a text file\nand creates a key-value table with social security numbers of type Long as the key and instances of the case class Person as the value" -> "https://hmiddelk.github.io/muntabot/compendium.pdf#nameddest=Reading%20text%20from%20file%20and%20webpage"
   ),
   Week(10) -> Concepts(
-    "arv",
-    "subtypspolymorfism",
-    "bastyp",
-    "final medlem",
-    "kodgranskning",
-    "skyddad medlem (protected)",
-    "överskuggning (override)",
-    "dynamisk bindning",
-    "kod-duplicering",
-    "anonym klass",
-    "förseglad typ"
+    "inheritance",
+    "abstract class",
+    "subtype polymorphism",
+    "basetype",
+    "final member",
+    "code review",
+    "protected member",
+    "override",
+    "dynamic binding",
+    "code duplication",
+    "anonymous class"
+  ),
+  Week(10) -> Concepts.forScala(
+    "sealed type",
+    "trait",
+    "mixin composition"
+  ),
+  Week(10) -> Concepts.forJava(
+    "interface",
+    "multiple interface inheritance"
   ),
   Week(10) -> Contrasts(
-    "subtyp" -> "supertyp",
-    "klass" -> "trait",
-    "arv" -> "komposition",
-    "abstrakt medlem" -> "konkret medlem",
-    "statisk typ" -> "dynamisk typ"
+    "subtype" -> "supertype",
+    "inheritance" -> "composition",
+    "abstract member" -> "concrete member",
+    "static type" -> "dynamic type"
+  ),
+  Week(10) -> Contrasts.forScala(
+    "class" -> "trait"
   )
+)
+
+lazy val comparisons: Seq[Comparison] = Seq(
+  Comparison(Week(1),  "if-expression",    "ternary operator"),
+  Comparison(Week(3),  "anonymous function", "lambda function"),
+  Comparison(Week(1),  "value types",      "primitive types"),
+  Comparison(Week(1),  "REPL",             "jshell"),
+  Comparison(Week(1),  "procedure",        "void method"),
+  Comparison(Week(4),  "singleton object",  "singleton pattern"),
+  Comparison(Week(5),  "companion object",  "static member"),
+  Comparison(Week(5),  "case class",        "Record"),
+  Comparison(Week(6),  "Option",            "Optional"),
+  Comparison(Week(6),  "match expression",  "switch expression"),
+  Comparison(Week(7),  "ArrayBuffer",       "ArrayList"),
+  Comparison(Week(10), "trait",             "interface"),
+  Comparison(Week(10), "mixin composition", "multiple interface inheritance"),
 )

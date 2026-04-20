@@ -22,10 +22,10 @@ object Muntabot extends App:
     Document.appendText(
       containerElement,
       "p",
-      "Slumpa en fråga i taget till och med läsvecka:"
+      "Randomize one question at a time through reading week:"
     )
 
-    Document.appendInput(containerElement, "Ange heltal (1-10)", "week-input") {
+    Document.appendInput(containerElement, "Enter integers (1-10)", "week-input") {
       val newInput = weekInput.value
 
       if newInput == "" then untilWeek = MaxWeek
@@ -41,11 +41,34 @@ object Muntabot extends App:
     Document.appendLinkToApp(
       containerElement,
       Rehearsal,
-      "Spojla alla frågor"
+      "Spoiler all questions"
     )
 
+    Document.appendLink(containerElement, "#rehearsal/compare", "Scala ↔ Java")
+
+    var scalaBtn: dom.html.Button = null
+    var javaBtn: dom.html.Button = null
+    var codeBtn: dom.html.Button = null
+
+    scalaBtn = Document.appendButton(containerElement, "● Scala", disabled = true) {
+      langFilter = LangFilter.Scala
+      scalaBtn.disabled = true
+      scalaBtn.textContent = "● Scala"
+      javaBtn.disabled = false
+      javaBtn.textContent = "○ Java"
+      if codeBtn != null then codeBtn.disabled = false
+    }
+    javaBtn = Document.appendButton(containerElement, "○ Java") {
+      langFilter = LangFilter.Java
+      scalaBtn.disabled = false
+      scalaBtn.textContent = "○ Scala"
+      javaBtn.disabled = true
+      javaBtn.textContent = "● Java"
+      if codeBtn != null then codeBtn.disabled = true
+    }
+
     val showText = document.createElement("pre").asInstanceOf[dom.html.Pre]
-    showText.textContent = "Klicka på knapparna ovan så får du en uppgift."
+    showText.textContent = "Click on the buttons above and you will receive a task."
 
     val showHelp = document.createElement("a").asInstanceOf[dom.html.Anchor]
     showHelp.href = ""
@@ -53,11 +76,11 @@ object Muntabot extends App:
     showHelp.target = "_blank" // Opens in new window
 
     for questionType <- Questions.types do
-      Document.appendButton(containerElement, questionType.title) {
+      val btn = Document.appendButton(containerElement, questionType.title) {
         if questionType == Code then
           val contents = questionType
             .getQuestion(
-              questionType.pickAnyQuestion(untilWeek, questionType)
+              questionType.pickAnyQuestion(untilWeek, questionType, langFilter)
             )
             .split(
               "39d2c101a1a9746c5e54da6ba6a4ed48"
@@ -67,7 +90,7 @@ object Muntabot extends App:
 
           if contents.length > 1 then
             showHelp.href = contents(1)
-            showHelp.textContent = "Visa information från kursboken"
+            showHelp.textContent = "Loopup information in the course book"
           else
             showHelp.textContent = ""
             showHelp.href = ""
@@ -76,7 +99,7 @@ object Muntabot extends App:
           showHelp.href = ""
 
           showText.textContent = questionType.getQuestion(
-            questionType.pickAnyQuestion(untilWeek, questionType)
+            questionType.pickAnyQuestion(untilWeek, questionType, langFilter)
           )
 
           if untilWeek < 1 || untilWeek > MaxWeek then
@@ -85,11 +108,13 @@ object Muntabot extends App:
 
           weekInput.value = untilWeek.toString
       }
+      if questionType == Code then
+        codeBtn = btn
 
     Document.appendText(
       containerElement,
       "p",
-      "Hjälpmedel: papper, penna, REPL, snabbreferens."
+      "Tools: paper, pencil, REPL, rapid lookup."
     )
 
     containerElement.appendChild(showText)

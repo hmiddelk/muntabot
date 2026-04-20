@@ -48,6 +48,15 @@ object Document:
     targetNode.appendChild(textElement)
     textElement
 
+  def appendLink(targetNode: dom.Node, href: String, textContent: String): dom.html.Anchor =
+    val linkParagraph = document.createElement("p")
+    val link = document.createElement("a").asInstanceOf[dom.html.Anchor]
+    link.textContent = textContent
+    link.href = href
+    linkParagraph.appendChild(link)
+    targetNode.appendChild(linkParagraph)
+    link
+
   def appendLinkToApp(
       targetNode: dom.Node,
       app: App,
@@ -63,7 +72,7 @@ object Document:
     linkToApp
 
   def appendHomeLink(targetNode: dom.Node) =
-    Document.appendLinkToApp(targetNode, Muntabot, "Tillbaka hem")
+    Document.appendLinkToApp(targetNode, Muntabot, "Back Home")
 
   /** Deletes the element with the same id from the targetNode if it exists, and
     * then creates a new 'div' element and returns it.
