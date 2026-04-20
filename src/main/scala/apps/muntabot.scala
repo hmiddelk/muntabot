@@ -38,11 +38,7 @@ object Muntabot extends App:
 
     }
 
-    Document.appendLinkToApp(
-      containerElement,
-      Rehearsal,
-      "Spoiler all questions"
-    )
+    Document.appendLink(containerElement, s"${Rehearsal.page}/week", "Spoiler all questions")
 
     Document.appendLink(containerElement, "#rehearsal/compare", "Scala ↔ Java")
 
